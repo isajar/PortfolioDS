@@ -40,6 +40,33 @@ FN: false negatives -> type II error.
 
 #### Regression
 
-- **MAE:**
-- **MSE:**
-- **RMSE:**
+- **MAE:** Mean Absolute Error -> 1/n \* sum(y_true - y_pred). Won't punish large errors. If the majority of points are well predicted, large error will be hiddem.
+- **MSE:** Mean Squared Error -> 1/n \* sum( (y_true - y_pred) ^ 2). Will give more weigth to large errors. The result has different unit than y (unit(y)^2).
+- **RMSE:** Root Mean Square Error -> sqrt(MSE). Most popular, has the same unit as y.
+
+#### Conclusion
+
+- You have to take into account your context. $10 is good for housing price, but horrible for candy price.
+- Compare your error metric to the average value of the label in your data set.
+
+### Bias-Variance Trade-Off
+
+- The bias-variance trade-off is the point where we are adding just noise by adding model complexity.
+- The training error goes down as it has but the test error is starting to go up.
+- You can think the data as a convination of signal + noise.
+  ** As your model has less bias and more variance you are learning the signal and the noise (overfiting).
+  ** As your model has more bias and less variance you avoid noise but learn only part of the signal (underfitting).
+
+### MODELS
+
+#### Logistic Regression
+
+- Clasification problems.
+- Sigmoid funtion to get values between 0 and 1.
+- Based off this value (probability) we assign a class putting a cut off point in some value like 0.5 (0<-x <? 0.5 ?> x-> 1)
+
+### KNN k-nearest neighbours
+
+1. Calculate the distance from x (new point) to all points in your data.
+2. Sort the points in your data by increasing distance from x.
+3. Predict the majority label of the "k" closet point. Basically you count whose class has more points in your count.
